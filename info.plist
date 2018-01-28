@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Rholang</string>
+	<key>ordering</key>
+	<array>
+		<string>36a6a366-07fb-4659-ba3d-86cfc03c2f1e</string>
+		<string>b6b75644-a366-424e-a27a-63225a75dec0</string>
+	</array>
+	<key>uuid</key>
+	<string>7a3f0a1c-b7ac-444a-a05c-51f8454b0879</string>
+</dict>
+</plist>

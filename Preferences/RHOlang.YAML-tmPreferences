@@ -1,0 +1,11 @@
+name: Comments
+scope: source.rho
+settings:
+  shellVariables:
+  - name: TM_COMMENT_START
+    value: '// '
+  - name: TM_COMMENT_START_2
+    value: '/*'
+  - name: TM_COMMENT_END_2
+    value: '*/'
+uuid: b6b75644-a366-424e-a27a-63225a75dec0
