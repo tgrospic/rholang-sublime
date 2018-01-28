@@ -12,6 +12,16 @@ Programmers in concurrent languages such as Erlang/Elixir say that one of the ha
 
 With all this sweet superpowers, that comes with the Rholang compiler and type checker, it will be a pleasure to write smart contracts. :lollipop:
 
+## Installation
+
+#### [Package Control][rholang-package]
+
+Install the package called `Rholang`
+
+#### Manual
+
+Clone the repository in your Sublime Text `Packages` directory.
+
 ## TODO
 
 - add commands, shippets, completion...
@@ -32,6 +42,7 @@ With all this sweet superpowers, that comes with the Rholang compiler and type c
 [rho-bnf-origin]: https://github.com/rchain/rchain/blob/2710ac95a304afd3840f3c77d72ee37e607dbf53/rholang/src/main/bnfc/rholang.cf
 [arch-rholang]: http://rchain-architecture.readthedocs.io/en/latest/contracts/contract-design.html#rholang-a-concurrent-language
 [arch-namespace-logic]: http://rchain-architecture.readthedocs.io/en/latest/contracts/namespaces.html#namespace-logic
+[rholang-package]: https://packagecontrol.io/packages/Rholang
 
 [beta-badge]: https://cdn.rawgit.com/tgrospic/rholang-sublime/master/assets/beta-0.0.1.svg
 [license]: https://github.com/tgrospic/rholang-sublime/blob/master/LICENSE
