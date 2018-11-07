@@ -41,7 +41,7 @@ Clone the repository in your Sublime Text `Packages` directory.
 
 [rchain-coop]: https://www.rchain.coop
 [rho-github]: https://github.com/rchain/rchain/tree/master/rholang
-[rho-bnf-origin]: https://github.com/rchain/rchain/blob/2710ac95a304afd3840f3c77d72ee37e607dbf53/rholang/src/main/bnfc/rholang.cf
+[rho-bnf-origin]: https://github.com/rchain/rchain/blob/243a3fd7b1d7f1b9669920da80f419e84fbd02b6/rholang/src/main/bnfc/rholang_mercury.cf
 [arch-rholang]: http://rchain-architecture.readthedocs.io/en/latest/contracts/contract-design.html#rholang-a-concurrent-language
 [arch-namespace-logic]: http://rchain-architecture.readthedocs.io/en/latest/contracts/namespaces.html#namespace-logic
 [rholang-package]: https://packagecontrol.io/packages/Rholang

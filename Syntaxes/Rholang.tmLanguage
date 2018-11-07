@@ -12,205 +12,11 @@
 	<array>
 		<dict>
 			<key>include</key>
-			<string>#declarations</string>
+			<string>#proc</string>
 		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
-		<key>appl</key>
-		<dict>
-			<key>begin</key>
-			<string>(?=\b\.?[-_'[:alnum:]]+\s*\()</string>
-			<key>end</key>
-			<string>(?&lt;=\))</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#argument-list</string>
-				</dict>
-				<dict>
-					<key>captures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.function.rho</string>
-						</dict>
-					</dict>
-					<key>match</key>
-					<string>[-_'[:alnum:]]+</string>
-				</dict>
-			</array>
-		</dict>
-		<key>argument-list</key>
-		<dict>
-			<key>begin</key>
-			<string>\(</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.parenthesis.open.rho</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>\)</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.parenthesis.close.rho</string>
-				</dict>
-			</dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#terminals</string>
-				</dict>
-			</array>
-		</dict>
-		<key>bind</key>
-		<dict>
-			<key>begin</key>
-			<string>\(</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.parenthesis.open.rho</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>\)</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.parenthesis.close.rho</string>
-				</dict>
-			</dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#parameter-bind</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#terminals</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>&lt;-|/:|:\\</string>
-					<key>name</key>
-					<string>keyword.other.bind.rho</string>
-				</dict>
-			</array>
-		</dict>
-		<key>block-declaration</key>
-		<dict>
-			<key>begin</key>
-			<string>\{</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.curlybrace.open.rho</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>\}</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.curlybrace.close.rho</string>
-				</dict>
-			</dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#declarations</string>
-				</dict>
-			</array>
-		</dict>
-		<key>case-declaration</key>
-		<dict>
-			<key>begin</key>
-			<string>(?=\bcase\b)</string>
-			<key>end</key>
-			<string>(?&lt;=\})</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>begin</key>
-					<string>\bcase\b</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.case.rho</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?=\{)</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#parameter-bind</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#terminals</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>=&gt;</string>
-							<key>name</key>
-							<string>keyword.control.case.rho</string>
-						</dict>
-						<dict>
-							<key>match</key>
-							<string>&lt;-</string>
-							<key>name</key>
-							<string>keyword.other.case.rho</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#block-declaration</string>
-				</dict>
-			</array>
-		</dict>
-		<key>chan</key>
-		<dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.other.chan.rho</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>([@*#]*)([-_'[:alnum:]]+)</string>
-		</dict>
 		<key>comment</key>
 		<dict>
 			<key>patterns</key>
@@ -296,9 +102,38 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\b(Nil|true|false)\b</string>
+					<string>\b(_|Nil|true|false|Bool|Int|String|ByteArray|Uri|not|matches|and|or|Set)\b</string>
 					<key>name</key>
 					<string>constant.language.rho</string>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.bundle.rho</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>constant.language.rho</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>\b(bundle)([+-0])?</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\b(if|else)\b</string>
+					<key>name</key>
+					<string>keyword.control.if.rho</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\||/\\|\\/|~|/|%%|\+|\-|\+\+|&lt;=|&lt;|&gt;=|&gt;|==|!=|&lt;-|=&gt;|\.\.\.</string>
+					<key>name</key>
+					<string>keyword.control.op.rho</string>
 				</dict>
 				<dict>
 					<key>match</key>
@@ -306,9 +141,34 @@
 					<key>name</key>
 					<string>constant.numeric.rho</string>
 				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(@)"</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>constant.language.quote.rho</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>"</string>
+					<key>name</key>
+					<string>string.quoted.double.rho</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>\\.</string>
+							<key>name</key>
+							<string>constant.character.escape.rho</string>
+						</dict>
+					</array>
+				</dict>
 			</array>
 		</dict>
-		<key>contract-declaration</key>
+		<key>contract</key>
 		<dict>
 			<key>begin</key>
 			<string>(?=\bcontract\b)</string>
@@ -317,20 +177,14 @@
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>match</key>
-					<string>\bcontract\b</string>
-					<key>name</key>
-					<string>keyword.other.contract.rho</string>
-				</dict>
-				<dict>
 					<key>begin</key>
-					<string>([-_''[:alnum:]]+)</string>
+					<string>\bcontract\b</string>
 					<key>beginCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>entity.name.function.rho</string>
+							<string>keyword.control.contract.rho</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -338,99 +192,36 @@
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>include</key>
-							<string>#comment</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#parameter-list</string>
-						</dict>
-						<dict>
-							<key>begin</key>
-							<string>(?&lt;=\))</string>
-							<key>end</key>
-							<string>(?=\{)</string>
-							<key>patterns</key>
-							<array>
+							<key>captures</key>
+							<dict>
+								<key>0</key>
 								<dict>
-									<key>match</key>
-									<string>\=</string>
 									<key>name</key>
-									<string>keyword.other.contract.rho</string>
+									<string>entity.name.function.rho</string>
 								</dict>
-							</array>
+							</dict>
+							<key>match</key>
+							<string>[-_'[:alnum:]]+</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>\=</string>
+							<key>name</key>
+							<string>constant.language.contract.rho</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#proc</string>
 						</dict>
 					</array>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#block-declaration</string>
+					<string>#proc</string>
 				</dict>
 			</array>
 		</dict>
-		<key>declarations</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#new-declaration</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#contract-declaration</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#func-declaration</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#for-declaration</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#match-declaration</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#select-declaration</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#sum-total-declaration</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#block-declaration</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#appl</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#constant</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#chan</string>
-				</dict>
-			</array>
-		</dict>
-		<key>for-declaration</key>
+		<key>for</key>
 		<dict>
 			<key>begin</key>
 			<string>(?=\bfor\b)</string>
@@ -455,146 +246,39 @@
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#comment</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#bind</string>
+							<string>#proc</string>
 						</dict>
 					</array>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#block-declaration</string>
+					<string>#proc</string>
 				</dict>
 			</array>
 		</dict>
-		<key>func-declaration</key>
+		<key>match-select</key>
 		<dict>
 			<key>begin</key>
-			<string>(?=\bdef\b)</string>
+			<string>\b(match|select)\b</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.match-select.rho</string>
+				</dict>
+			</dict>
 			<key>end</key>
-			<string>(?&lt;=\})</string>
+			<string>(?=\{)</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>match</key>
-					<string>\bdef\b</string>
-					<key>name</key>
-					<string>keyword.other.function.rho</string>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>([-_''[:alnum:]]+)</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>1</key>
-						<dict>
-							<key>name</key>
-							<string>entity.name.function.rho</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?=\{)</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#comment</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#parameter-list</string>
-						</dict>
-						<dict>
-							<key>begin</key>
-							<string>(?&lt;=\))</string>
-							<key>end</key>
-							<string>(?=\{)</string>
-							<key>patterns</key>
-							<array>
-								<dict>
-									<key>match</key>
-									<string>\=</string>
-									<key>name</key>
-									<string>keyword.other.function.rho</string>
-								</dict>
-							</array>
-						</dict>
-					</array>
-				</dict>
-				<dict>
 					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#block-declaration</string>
+					<string>#proc</string>
 				</dict>
 			</array>
 		</dict>
-		<key>match-declaration</key>
-		<dict>
-			<key>begin</key>
-			<string>(?=\bmatch\b)</string>
-			<key>end</key>
-			<string>(?=\})</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>begin</key>
-					<string>\bmatch\b</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.match.rho</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>\bwith\b</string>
-					<key>endCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.match.rho</string>
-						</dict>
-					</dict>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#terminals</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#block-declaration</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#terminals</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>=&gt;</string>
-					<key>name</key>
-					<string>keyword.control.match.rho</string>
-				</dict>
-			</array>
-		</dict>
-		<key>new-declaration</key>
+		<key>new</key>
 		<dict>
 			<key>patterns</key>
 			<array>
@@ -606,7 +290,7 @@
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.new.rho</string>
+							<string>constant.language.new.rho</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -616,7 +300,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.other.in.rho</string>
+							<string>constant.language.in.rho</string>
 						</dict>
 					</dict>
 					<key>patterns</key>
@@ -627,17 +311,17 @@
 						</dict>
 						<dict>
 							<key>include</key>
+							<string>#string</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#system-proc</string>
+						</dict>
+						<dict>
+							<key>include</key>
 							<string>#parameter</string>
 						</dict>
 					</array>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#block-declaration</string>
 				</dict>
 			</array>
 		</dict>
@@ -645,50 +329,22 @@
 		<dict>
 			<key>captures</key>
 			<dict>
-				<key>0</key>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>constant.language.rho</string>
+				</dict>
+				<key>2</key>
 				<dict>
 					<key>name</key>
 					<string>variable.name.rho</string>
 				</dict>
 			</dict>
 			<key>match</key>
-			<string>[-_'[:alnum:]]+</string>
+			<string>([@*]?)([-_'[:alnum:]]+)</string>
 		</dict>
-		<key>parameter-bind</key>
+		<key>proc</key>
 		<dict>
-			<key>captures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>variable.name.rho</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>[-_'[:alnum:]]+\s*(?=&lt;-)</string>
-		</dict>
-		<key>parameter-list</key>
-		<dict>
-			<key>begin</key>
-			<string>\(</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.parenthesis.open.rho</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>\)</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.parenthesis.close.rho</string>
-				</dict>
-			</dict>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -701,54 +357,185 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#system-proc</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#new</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#contract</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#for</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#match-select</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#constant</string>
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#parameter</string>
+					<string>#proc-quote</string>
 				</dict>
 			</array>
 		</dict>
-		<key>select-declaration</key>
+		<key>proc-quote</key>
 		<dict>
-			<key>begin</key>
-			<string>(?=\bselect\b)</string>
-			<key>end</key>
-			<string>(?&lt;=\})</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>\bselect\b</string>
+					<string>(@?)(\{)</string>
 					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>constant.language.quote.rho</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.parenthesis.open.rho</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
 					<dict>
 						<key>0</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.control.select.rho</string>
+							<string>punctuation.parenthesis.close.rho</string>
 						</dict>
 					</dict>
-					<key>end</key>
-					<string>(?=\})</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#comment</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#case-declaration</string>
+							<string>#proc</string>
 						</dict>
 					</array>
 				</dict>
 				<dict>
-					<key>include</key>
-					<string>#comment</string>
+					<key>begin</key>
+					<string>(!|!!)?(\()</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control.send.rho</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.parenthesis.open.rho</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.parenthesis.close.rho</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#proc</string>
+						</dict>
+					</array>
 				</dict>
 				<dict>
-					<key>include</key>
-					<string>#block-declaration</string>
+					<key>begin</key>
+					<string>(@?)(\()</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>constant.language.quote.rho</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.parenthesis.open.rho</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.parenthesis.close.rho</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#proc</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(@?)(\[)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>constant.language.quote.rho</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.parenthesis.open.rho</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\]</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.parenthesis.close.rho</string>
+						</dict>
+					</dict>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#proc</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>constant.language.rho</string>
+						</dict>
+					</dict>
+					<key>match</key>
+					<string>([@*])([-_'[:alnum:]]+)</string>
 				</dict>
 			</array>
 		</dict>
@@ -770,72 +557,21 @@
 				</dict>
 			</array>
 		</dict>
-		<key>sum-total-declaration</key>
+		<key>system-proc</key>
 		<dict>
 			<key>begin</key>
-			<string>(?=\b(sum|total)\b)</string>
+			<string>`</string>
 			<key>end</key>
-			<string>(?&lt;=\})</string>
+			<string>`</string>
+			<key>name</key>
+			<string>constant.language.system.rho</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>begin</key>
-					<string>\b(sum|total)\b</string>
-					<key>beginCaptures</key>
-					<dict>
-						<key>0</key>
-						<dict>
-							<key>name</key>
-							<string>keyword.control.sum.rho</string>
-						</dict>
-					</dict>
-					<key>end</key>
-					<string>(?&lt;=\))</string>
-					<key>patterns</key>
-					<array>
-						<dict>
-							<key>include</key>
-							<string>#comment</string>
-						</dict>
-						<dict>
-							<key>include</key>
-							<string>#bind</string>
-						</dict>
-					</array>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#block-declaration</string>
-				</dict>
-			</array>
-		</dict>
-		<key>terminals</key>
-		<dict>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>#comment</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#string</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#appl</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#constant</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#chan</string>
+					<key>match</key>
+					<string>\\.</string>
+					<key>name</key>
+					<string>constant.character.escape.rho</string>
 				</dict>
 			</array>
 		</dict>
