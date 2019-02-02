@@ -1,4 +1,6 @@
-# <img src="./assets/rchain.png" width="32px"></img> Rholang for SublimeText
+# Rholang for SublimeText
+
+<img src="./assets/rchain.png"></img>
 
 ![beta][beta-badge]
 
@@ -35,6 +37,9 @@ Clone the repository in your Sublime Text `Packages` directory.
 ### 0.0.1
 - Initial release. Syntax highlighting.
 
+### 0.1.0 (February 02, 2019)
+- Grammar update for Rholang Mercury release v0.8>.
+
 ## License
 
 [The MIT License (MIT)][license]
@@ -46,5 +51,5 @@ Clone the repository in your Sublime Text `Packages` directory.
 [arch-namespace-logic]: http://rchain-architecture.readthedocs.io/en/latest/contracts/namespaces.html#namespace-logic
 [rholang-package]: https://packagecontrol.io/packages/Rholang
 
-[beta-badge]: https://cdn.rawgit.com/tgrospic/rholang-sublime/master/assets/beta-0.0.1.svg
+[beta-badge]: https://cdn.rawgit.com/tgrospic/rholang-sublime/master/assets/beta-0.1.0.svg
 [license]: https://github.com/tgrospic/rholang-sublime/blob/master/LICENSE

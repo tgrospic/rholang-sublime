@@ -294,10 +294,10 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(in)\s*(?=\{)</string>
+					<string>\bin\b</string>
 					<key>endCaptures</key>
 					<dict>
-						<key>1</key>
+						<key>0</key>
 						<dict>
 							<key>name</key>
 							<string>constant.language.in.rho</string>
